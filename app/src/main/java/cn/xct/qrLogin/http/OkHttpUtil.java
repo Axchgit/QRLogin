@@ -32,6 +32,7 @@ public class OkHttpUtil {
         Call call = null;
         url = getParamsString(url, paramsMap);
         Request request = new Request.Builder()
+                .addHeader("Authorization", "e5cHLWScbto3VfvYTU1llVZgl/WniA4QZZ8epmn8k/o=")
                 .url(url)
                 .build();
         call = okHttpClient.newCall(request);
@@ -46,6 +47,7 @@ public class OkHttpUtil {
         }
         RequestBody requestBody = builder.build();
         Request request = new Request.Builder()
+                .addHeader("Authorization", "")
                 .post(requestBody)
                 .url(url)
                 .build();

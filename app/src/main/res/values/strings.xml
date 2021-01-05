@@ -1,8 +1,24 @@
 <resources>
     <string name="app_name">口令</string>
-    
+
     <string name="result_title">扫一扫登录</string>
     <string name="setup_title">账号设置</string>
     <string name="scan_title">扫一扫</string>
+    <string name="title_activity_phone_login">PhoneLoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_phone_number">手机号</string>
+    <string name="prompt_check_code">验证码</string>
+<!--    <string name="prompt_password">Password</string>-->
+    <string name="action_sign_in_en">Sign in or register</string>
+<!--    <string name="action_sign_in">登录</string>-->
+    <string name="action_send_check_code">发送验证码</string>
+    <string name="action_sign_in">登录</string>
+
+
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 </resources>
