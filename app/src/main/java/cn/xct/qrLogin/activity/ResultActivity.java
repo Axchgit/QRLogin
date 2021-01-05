@@ -1,4 +1,4 @@
-package cn.trunch.auth.activity;
+package cn.xct.qrLogin.activity;
 
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.dou361.dialogui.DialogUIUtils;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 
@@ -20,14 +18,14 @@ import java.util.HashMap;
 //import java.util.StrUtils;
 
 
-import cn.trunch.auth.R;
-import cn.trunch.auth.entity.AuthEntity;
-import cn.trunch.auth.http.Api;
-import cn.trunch.auth.http.ApiListener;
-import cn.trunch.auth.http.ApiUtil;
-import cn.trunch.auth.http.UniteApi;
+import cn.xct.qrLogin.R;
+import cn.xct.qrLogin.entity.AuthEntity;
+import cn.xct.qrLogin.http.Api;
+import cn.xct.qrLogin.http.ApiListener;
+import cn.xct.qrLogin.http.ApiUtil;
+import cn.xct.qrLogin.http.UniteApi;
 
-import static cn.trunch.auth.util.StrUtils.stampToTime;
+import static cn.xct.qrLogin.util.StrUtils.stampToTime;
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class ResultActivity extends AppCompatActivity {

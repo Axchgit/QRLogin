@@ -1,17 +1,15 @@
-package cn.trunch.auth.activity;
+package cn.xct.qrLogin.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.dou361.dialogui.DialogUIUtils;
 
-import cn.trunch.auth.R;
-import cn.trunch.auth.http.ApiUtil;
-import cn.trunch.auth.http.OkHttpUtil;
+import cn.xct.qrLogin.R;
+import cn.xct.qrLogin.http.ApiUtil;
+import cn.xct.qrLogin.http.OkHttpUtil;
 
 public class WelcomeActivity extends AppCompatActivity {
 //    private TextView appName;

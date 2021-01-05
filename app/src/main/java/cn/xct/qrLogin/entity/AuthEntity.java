@@ -1,8 +1,7 @@
-package cn.trunch.auth.entity;
+package cn.xct.qrLogin.entity;
 
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class AuthEntity implements Serializable {
 

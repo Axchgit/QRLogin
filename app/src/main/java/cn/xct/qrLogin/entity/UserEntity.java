@@ -1,4 +1,4 @@
-package cn.trunch.auth.entity;
+package cn.xct.qrLogin.entity;
 
 
 public class UserEntity {

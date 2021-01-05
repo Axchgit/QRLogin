@@ -1,4 +1,4 @@
-package cn.trunch.auth.http;
+package cn.xct.qrLogin.http;
 
 /**
  * API调结果用监听接口

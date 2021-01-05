@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.0"
     defaultConfig {
-        applicationId "cn.trunch.auth"
+        applicationId 'cn.xct.qrLogin'
         minSdkVersion 17
         targetSdkVersion 27
         versionCode 1

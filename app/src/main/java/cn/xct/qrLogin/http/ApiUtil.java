@@ -1,4 +1,4 @@
-package cn.trunch.auth.http;
+package cn.xct.qrLogin.http;
 
 
 public class ApiUtil {

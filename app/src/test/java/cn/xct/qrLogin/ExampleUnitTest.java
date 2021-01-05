@@ -1,4 +1,4 @@
-package cn.trunch.auth;
+package cn.xct.qrLogin;
 
 import org.junit.Test;
 

@@ -1,11 +1,10 @@
-package cn.trunch.auth.http;
+package cn.xct.qrLogin.http;
 
 import android.util.Log;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.List;
 
 import okhttp3.Call;
 

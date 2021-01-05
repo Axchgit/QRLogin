@@ -1,4 +1,4 @@
-package cn.trunch.auth.activity;
+package cn.xct.qrLogin.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +14,9 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.dou361.dialogui.DialogUIUtils;
 import com.suke.widget.SwitchButton;
 
-import cn.trunch.auth.R;
-import cn.trunch.auth.http.ApiUtil;
-import cn.trunch.auth.util.StatusBarUtil;
+import cn.xct.qrLogin.R;
+import cn.xct.qrLogin.http.ApiUtil;
+import cn.xct.qrLogin.util.StatusBarUtil;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 

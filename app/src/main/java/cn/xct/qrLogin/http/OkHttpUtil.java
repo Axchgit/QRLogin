@@ -1,17 +1,12 @@
-package cn.trunch.auth.http;
+package cn.xct.qrLogin.http;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import cn.trunch.auth.util.StrUtils;
 import okhttp3.Call;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;

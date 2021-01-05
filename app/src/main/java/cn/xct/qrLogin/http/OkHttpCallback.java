@@ -1,4 +1,4 @@
-package cn.trunch.auth.http;
+package cn.xct.qrLogin.http;
 
 import android.os.Handler;
 import android.os.Looper;

@@ -1,4 +1,4 @@
-package cn.trunch.auth.activity;
+package cn.xct.qrLogin.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -7,24 +7,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.dou361.dialogui.DialogUIUtils;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
 
-import cn.trunch.auth.R;
-import cn.trunch.auth.entity.UserEntity;
-import cn.trunch.auth.http.Api;
-import cn.trunch.auth.http.ApiListener;
-import cn.trunch.auth.http.ApiUtil;
-import cn.trunch.auth.http.UniteApi;
-import cn.trunch.auth.util.StatusBarUtil;
+import cn.xct.qrLogin.R;
+import cn.xct.qrLogin.entity.UserEntity;
+import cn.xct.qrLogin.http.Api;
+import cn.xct.qrLogin.http.ApiListener;
+import cn.xct.qrLogin.http.ApiUtil;
+import cn.xct.qrLogin.http.UniteApi;
+import cn.xct.qrLogin.util.StatusBarUtil;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -53,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         init();
         initListener();
     }
+
 
     private void init() {
         loginAccount = findViewById(R.id.loginAccount);
@@ -176,6 +175,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+
 //        loginQQBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

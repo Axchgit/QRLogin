@@ -1,4 +1,4 @@
-package cn.trunch.auth.util;
+package cn.xct.qrLogin.util;
 
 import android.os.Environment;
 import android.text.TextUtils;

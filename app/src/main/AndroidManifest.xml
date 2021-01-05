@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.trunch.auth">
+    package="cn.xct.qrLogin">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,10 +17,10 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="cn.xct.qrLogin.activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.WelcomeActivity"
+            android:name="cn.xct.qrLogin.activity.WelcomeActivity"
             android:screenOrientation="portrait">
 
             <intent-filter>
@@ -30,13 +30,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.SetupActivity"
+            android:name="cn.xct.qrLogin.activity.SetupActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ResultActivity"
+            android:name="cn.xct.qrLogin.activity.ResultActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ScanActivity"
+            android:name="cn.xct.qrLogin.activity.ScanActivity"
             android:screenOrientation="portrait" />
     </application>
 </manifest>

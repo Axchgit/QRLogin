@@ -1,6 +1,5 @@
-package cn.trunch.auth.http;
+package cn.xct.qrLogin.http;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;

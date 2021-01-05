@@ -1,4 +1,4 @@
-package cn.trunch.auth.util;
+package cn.xct.qrLogin.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,7 +14,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import cn.trunch.auth.R;
+import cn.xct.qrLogin.R;
 
 
 public class StatusBarUtil {
