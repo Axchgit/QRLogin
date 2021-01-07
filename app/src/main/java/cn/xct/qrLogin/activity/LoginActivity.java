@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import cn.xct.qrLogin.http.ApiListener;
 import cn.xct.qrLogin.http.ApiUtil;
 import cn.xct.qrLogin.http.UniteApi;
 import cn.xct.qrLogin.util.StatusBarUtil;
+import cn.xct.qrLogin.util.StrUtils;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -73,9 +75,11 @@ public class LoginActivity extends AppCompatActivity {
                         false, true)
                         .show();
                 HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("userId", loginAccount.getText().toString());
-                hashMap.put("userPassword", loginPassword.getText().toString());
-                DialogUIUtils.showToastCenter(loginAccount.getText().toString());
+                hashMap.put("work_num", loginAccount.getText().toString());
+                hashMap.put("password", loginPassword.getText().toString());
+                hashMap.put("is_phone", "true");
+
+//                DialogUIUtils.showToastCenter(loginAccount.getText().toString());
 //                Log.i("getTest", loginAccount.getText().toString());
 
 //                DialogUIUtils.showToastCenter(ApiUtil.LOGIN);
@@ -90,14 +94,17 @@ public class LoginActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         UserEntity user = gson.fromJson(uniteApi.getJsonData().toString(), UserEntity.class);
 
-                        if (user.getUserId() != 0) {
+                        if (!StrUtils.isBlank(user.getUserToken())) {
                             // 保存在设置中
-                            ApiUtil.USER_ID = String.valueOf(user.getUserId());
+                            ApiUtil.WORK_NUM = String.valueOf(user.getWorkNum());
+                            ApiUtil.USER_TOKEN = user.getUserToken();
                             ApiUtil.USER_AVATAR = user.getUserAvatar();
                             ApiUtil.USER_NAME = user.getUserName();
+
                             // 保存在系统文件中
                             SharedPreferences.Editor editor = getSharedPreferences("token", MODE_PRIVATE).edit();
-                            editor.putString("userId", String.valueOf(user.getUserId()));
+                            editor.putString("workNum", String.valueOf(user.getWorkNum()));
+                            editor.putString("userToken", user.getUserToken());
                             editor.putString("userAvatar", user.getUserAvatar());
                             editor.putString("userName", user.getUserName());
                             editor.putBoolean("isPermit", true);

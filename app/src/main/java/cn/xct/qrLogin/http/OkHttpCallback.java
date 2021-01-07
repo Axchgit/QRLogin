@@ -57,7 +57,7 @@ public abstract class OkHttpCallback implements Callback {
     @Override
     public void onFailure(@NonNull final Call call, @NonNull IOException e) {
         //这里输出请求错误信息
-        Log.i("getTest", String.valueOf(e));
+        Log.i("getTest123", String.valueOf(e));
 
         if (isRunOnUiThread()) {
             handler.post(new Runnable() {

@@ -5,18 +5,29 @@ public class UserEntity {
 
   private long work_num;
   private String password;
+  private String user_token;
+
   private String nick_name;
   private String avatar;
   private long phone;
 
 
-  public long getUserId() {
+  public long getWorkNum() {
     return work_num;
   }
 
-  public void setUserId(long nick_name) {
-    this.work_num = nick_name;
+  public void setWorkNum(long work_num) {
+    this.work_num = work_num;
   }
+
+  public String getUserToken() {
+    return user_token;
+  }
+
+  public void setUserToken(String user_token) {
+    this.user_token = user_token;
+  }
+
 
 
   public String getUserPassword() {

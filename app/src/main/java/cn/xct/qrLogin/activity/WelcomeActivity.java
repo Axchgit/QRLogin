@@ -46,7 +46,8 @@ public class WelcomeActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         SharedPreferences preferences = getSharedPreferences("token", MODE_PRIVATE);
-                        ApiUtil.USER_ID = preferences.getString("userId", "");
+                        ApiUtil.WORK_NUM = preferences.getString("workNum", "");
+                        ApiUtil.USER_TOKEN = preferences.getString("userToken", "");
                         ApiUtil.USER_AVATAR = preferences.getString("userAvatar", "");
                         ApiUtil.USER_NAME = preferences.getString("userName", "未知用户");
                         boolean isPermit = preferences.getBoolean("isPermit", false);

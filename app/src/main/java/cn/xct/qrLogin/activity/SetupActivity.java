@@ -72,8 +72,10 @@ public class SetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = getSharedPreferences("token", MODE_PRIVATE).edit();
-                editor.putBoolean("isPermit", false);
-                editor.apply();
+//                editor.putBoolean("isPermit", false);
+//                editor.apply();
+                editor.clear();
+                editor.commit();
                 Intent intent = new Intent(SetupActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);

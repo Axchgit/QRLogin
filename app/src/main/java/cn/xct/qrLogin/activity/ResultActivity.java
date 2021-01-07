@@ -3,6 +3,7 @@ package cn.xct.qrLogin.activity;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -82,13 +83,15 @@ public class ResultActivity extends AppCompatActivity {
                         false, true)
                         .show();
                 HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("work_num", ApiUtil.USER_ID);
+                hashMap.put("work_num", ApiUtil.WORK_NUM);
                 new UniteApi(ApiUtil.TOKEN_USE + auth.getAuthToken(), hashMap).post(new ApiListener() {
                     @Override
                     public void success(Api api) {
                         dialog.dismiss();
                         UniteApi uniteApi = (UniteApi) api;
+
                         try {
+
                             if (uniteApi.getJsonData().getInt("state") == 1) {
                                 DialogUIUtils.showToastCenter("登录成功");
                                 finish();
@@ -107,6 +110,9 @@ public class ResultActivity extends AppCompatActivity {
 
                     @Override
                     public void failure(Api api) {
+//                        UniteApi uniteApi = (UniteApi) api;
+                        Log.i("Api", String.valueOf(api));
+
                         dialog.dismiss();
                         DialogUIUtils.showToastCenter("登录失败，请重试1");
                     }

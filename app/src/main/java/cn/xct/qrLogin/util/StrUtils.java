@@ -65,6 +65,45 @@ public class StrUtils {
         timeStemp = d.getTime();
         return timeStemp;
     }
+
+    /**
+     * 方法描述：自定义判断是否为空
+     *
+     * @param str the str
+     * @return the boolean
+     */
+    public static Boolean isBlank(String str) {
+        if (str != null)
+            str = str.replaceAll("\r\n|\n\r|\n|\r|\f|\t", "");
+        if (str == null)
+            return true;
+        else if (str.equals(""))
+            return true;
+        else if (str.equals("null"))
+            return true;
+        else if (str.equals("NULL"))
+            return true;
+        else if (str.equals("(null)"))
+            return true;
+        else if (str.equals("(NULL)"))
+            return true;
+        else if (str.trim().length() == 0)
+            return true;
+        return false;
+    }
+
+    /**
+     * 方法描述：判断obj是否为空
+     *
+     * @param obj the 判断的对象
+     * @return the boolean
+     */
+    public static Boolean isBlank(Object obj) {
+        if (obj != null) {
+            return isBlank(String.valueOf(obj));
+        }
+        return true;
+    }
 }
 
 

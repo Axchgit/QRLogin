@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -54,6 +55,86 @@ public class ScanActivity extends AppCompatActivity {
         applyCameraPermission();
     }
 
+
+
+    private void init() {
+        scanUAvatarBtn = findViewById(R.id.scanUAvatarBtn);
+        scanUAvatar = findViewById(R.id.scanUAvatar);
+        scanView = findViewById(R.id.scanView);
+        Log.i("Api", ApiUtil.USER_AVATAR);
+
+        Glide.with(this)
+                .load(ApiUtil.USER_AVATAR)
+                .apply(bitmapTransform(new CircleCrop()))
+                .into(scanUAvatar);
+    }
+
+    private void initListener() {
+        scanUAvatarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanActivity.this, SetupActivity.class);
+                startActivity(intent);
+            }
+        });
+        scanView.setDelegate(new QRCodeView.Delegate() {
+            @Override
+            public void onScanQRCodeSuccess(String result) {
+                vibrate(); // 震动
+//                DialogUIUtils.showToastTop(result);
+                dialog = DialogUIUtils.showLoading(ScanActivity.this,
+                        "处理中...", false, false,
+                        false, true)
+                        .show();
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("work_num", ApiUtil.WORK_NUM);
+                hashMap.put("isScan", "true");
+//                DialogUIUtils.showToastCenter(ApiUtil.TOKEN_INFO + result);
+
+                new UniteApi(ApiUtil.TOKEN_INFO + result, hashMap).post(new ApiListener() {
+                    @Override
+                    public void success(Api api) {
+                        dialog.dismiss();
+                        UniteApi uniteApi = (UniteApi) api;
+                        Gson gson = new Gson();
+                        AuthEntity auth = gson.fromJson(uniteApi.getJsonData().toString(), AuthEntity.class);
+                        if (auth.getAuthState() == 0 || auth.getAuthState() == 2) {
+                            Intent intent = new Intent(ScanActivity.this, ResultActivity.class);
+                            intent.putExtra("auth", auth);
+                            startActivity(intent);
+                        } else if (auth.getAuthState() == 1) {
+                            DialogUIUtils.showToastCenter("登录码已使用");
+                        } else {
+                            DialogUIUtils.showToastCenter("登录码已过期");
+                        }
+                        delayStartSpot();
+                    }
+
+                    @Override
+                    public void failure(Api api) {
+                        dialog.dismiss();
+//                        DialogUIUtils.showToastCenter("登录码已过期1");
+                        DialogUIUtils.showToastCenter(ApiUtil.TOKEN_INFO + 123);
+
+                        delayStartSpot();
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCameraAmbientBrightnessChanged(boolean isDark) {
+
+            }
+
+            @Override
+            public void onScanQRCodeOpenCameraError() {
+
+            }
+        });
+    }
+
+    //刷新页面
     public void refresh() {
         finish();
         Intent intent = new Intent(ScanActivity.this, ScanActivity.class);
@@ -131,81 +212,6 @@ public class ScanActivity extends AppCompatActivity {
         if(requestCode==NOT_NOTICE){
             applyCameraPermission();//由于不知道是否选择了允许所以需要再次判断
         }
-    }
-
-    private void init() {
-        scanUAvatarBtn = findViewById(R.id.scanUAvatarBtn);
-        scanUAvatar = findViewById(R.id.scanUAvatar);
-        scanView = findViewById(R.id.scanView);
-        Glide.with(this)
-                .load(ApiUtil.USER_AVATAR)
-                .apply(bitmapTransform(new CircleCrop()))
-                .into(scanUAvatar);
-    }
-
-    private void initListener() {
-        scanUAvatarBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScanActivity.this, SetupActivity.class);
-                startActivity(intent);
-            }
-        });
-        scanView.setDelegate(new QRCodeView.Delegate() {
-            @Override
-            public void onScanQRCodeSuccess(String result) {
-                vibrate(); // 震动
-//                DialogUIUtils.showToastTop(result);
-                dialog = DialogUIUtils.showLoading(ScanActivity.this,
-                        "处理中...", false, false,
-                        false, true)
-                        .show();
-                HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("user_uuid", ApiUtil.USER_ID);
-                hashMap.put("isScan", "true");
-//                DialogUIUtils.showToastCenter(ApiUtil.TOKEN_INFO + result);
-
-                new UniteApi(ApiUtil.TOKEN_INFO + result, hashMap).post(new ApiListener() {
-                    @Override
-                    public void success(Api api) {
-                        dialog.dismiss();
-                        UniteApi uniteApi = (UniteApi) api;
-                        Gson gson = new Gson();
-                        AuthEntity auth = gson.fromJson(uniteApi.getJsonData().toString(), AuthEntity.class);
-                        if (auth.getAuthState() == 0 || auth.getAuthState() == 2) {
-                            Intent intent = new Intent(ScanActivity.this, ResultActivity.class);
-                            intent.putExtra("auth", auth);
-                            startActivity(intent);
-                        } else if (auth.getAuthState() == 1) {
-                            DialogUIUtils.showToastCenter("登录码已使用");
-                        } else {
-                            DialogUIUtils.showToastCenter("登录码已过期");
-                        }
-                        delayStartSpot();
-                    }
-
-                    @Override
-                    public void failure(Api api) {
-                        dialog.dismiss();
-//                        DialogUIUtils.showToastCenter("登录码已过期1");
-                        DialogUIUtils.showToastCenter(ApiUtil.TOKEN_INFO + 123);
-
-                        delayStartSpot();
-                    }
-                });
-
-            }
-
-            @Override
-            public void onCameraAmbientBrightnessChanged(boolean isDark) {
-
-            }
-
-            @Override
-            public void onScanQRCodeOpenCameraError() {
-
-            }
-        });
     }
 
     private void delayStartSpot() {
