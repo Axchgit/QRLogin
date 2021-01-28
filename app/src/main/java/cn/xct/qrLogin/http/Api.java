@@ -56,22 +56,17 @@ public abstract class Api {
 //            }
             if (isSuccess()) { // 根据状态码判断调用成功与否
                 try {
-                    Log.i("Api", "onSuccess: 失败3");
-
+                    Log.i("Api", "onSuccess: 成功");
                     parseData(jsonObject);//调用parseData解析响应结果
                     apiListener.success(Api.this); // 回调成功
                 } catch (Exception e) {
-                    Log.i("Api", "onSuccess: 失败2");
                     Log.i("Api", "失败"+String.valueOf(jsonObject));
                     Log.i("Api", "错误信息"+e.toString());
-
-
                     e.printStackTrace();
                     apiListener.failure(Api.this); // 回调失败，解析响应结果中的data错误
                 }
             } else {
-                Log.i("Api", "onSuccess: 失败4");
-
+                Log.i("Api", "onSuccess: 状态码错误");
                 try {
                     parseCode(jsonObject);
                     apiListener.failure(Api.this); // 回调失败，状态码非0

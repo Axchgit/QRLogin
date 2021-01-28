@@ -72,6 +72,7 @@ public class ResultActivity extends AppCompatActivity {
         resultUName.setText(ApiUtil.USER_NAME);
         resultTime.setText(stampToTime(auth.getAuthTime().toString()));
         resultAddress.setText(auth.getAuthAddress());
+        resultInfo.setText("请求登录的IP地址为"+auth.getAuthIp()+"，请确认是否本人操作");
     }
 
     private void initListener() {
@@ -114,7 +115,7 @@ public class ResultActivity extends AppCompatActivity {
                         Log.i("Api", String.valueOf(api));
 
                         dialog.dismiss();
-                        DialogUIUtils.showToastCenter("登录失败，请重试1");
+                        DialogUIUtils.showToastCenter("登录失败，请重试");
                     }
                 });
             }
